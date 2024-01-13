@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Tailwind CSS -->
+    <link href="your-path-to-tailwind.css" rel="stylesheet">
+
+    <title>Configuration Dashboard</title>
+</head>
+<body class="p-6">
+<div class="min-h-screen bg-gray-100 flex items-center justify-center">
+    <div class="bg-white p-6 rounded shadow-md w-full max-w-md">
+        <h2 class="mb-4 text-xl font-semibold text-gray-700">Chatbot Configuration</h2>
+        <form action="/update-config" method="post">
+            <!-- Configuration fields here -->
+            <div class="mb-4">
+                <label class="block text-gray-700">Top P</label>
+                <input type="number" step="any" min="0" max="1" name="top_p" value="{{ config.top_p }}" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm" required>
+            </div>
+            
+            <!-- Other configuration fields... -->
+            <div class="mb-4">
+                <label class="block text-gray-700">Max Tokens</label>
+                <input type="number" name="max_tokens" value="{{ config.max_tokens }}" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm" required>
+            </div>
+            
+            <button type="submit" class="w-full px-3 py-2 text-white bg-blue-500 rounded hover:bg-blue-600 focus:outline-none">Save Configuration</button>
+        </form>
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,35 @@
+wheel
+# torch
+# openai-whisper
+# google-cloud
+# google-cloud-videointelligence
+# google-cloud-vision
+python-dotenv
+opencv-python
+pydantic
+PyPDF2
+langchain
+openai
+# spacy
+# en-core-web-sm @ https://github.com/explosion/spacy-models/releases/download/en_core_web_sm-3.5.0/en_core_web_sm-3.5.0-py3-none-any.whl#sha256=0964370218b7e1672a30ac50d72cdc6b16f7c867496f1d60925691188f4d2510
+flask
+Flask-SocketIO
+# pandas
+# scikit-learn
+# fuzzywuzzy
+dateparser
+# nltk
+# mysql
+faiss-cpu
+gunicorn
+gevent
+gevent-websocket
+# mysql-connector-python
+# tensorflow
+requests
+numpy
+Pillow
+Python-IO
+# paramiko
+# sshtunnel
+# firebase_admin
