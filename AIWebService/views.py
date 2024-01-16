@@ -62,7 +62,6 @@ def chatGPTWebAPITester():
 def chat_with_gpt(messages=messages):
         
     prompt = request.form['prompt']
-    prompt = helpers.AddEmojiRequestToPrompt(prompt)
     messages.append({"role": "user", "content": prompt})
     response = client.chat.completions.create(
         model=config.model,
