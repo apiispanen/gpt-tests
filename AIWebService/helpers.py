@@ -1,6 +1,6 @@
 #helpers.py
 from AIWebService import config
-from google.cloud import videointelligence
+# from google.cloud import videointelligence
 import re
 import io
 
@@ -27,30 +27,30 @@ def remove_extra_emojis(api_response: str) -> str:
 
     return api_response
 
-def analyze_explicit_content(path):
-    # [START video_analyze_explicit_content]
-    """Detects explicit content from the GCS path to a video."""
-    video_client = videointelligence.VideoIntelligenceServiceClient()
-    features = [videointelligence.Feature.EXPLICIT_CONTENT_DETECTION]
+# def analyze_explicit_content(path):
+#     # [START video_analyze_explicit_content]
+#     """Detects explicit content from the GCS path to a video."""
+#     video_client = videointelligence.VideoIntelligenceServiceClient()
+#     features = [videointelligence.Feature.EXPLICIT_CONTENT_DETECTION]
 
-    operation = video_client.annotate_video(
-        request={"features": features, "input_uri": path}
-    )   
-    print("\nProcessing video for explicit content annotations:")
+#     operation = video_client.annotate_video(
+#         request={"features": features, "input_uri": path}
+#     )   
+#     print("\nProcessing video for explicit content annotations:")
 
-    result = operation.result(timeout=90)
-    print("\nFinished processing.")
+#     result = operation.result(timeout=90)
+#     print("\nFinished processing.")
 
-    content_analysis_dict = {}
-    # Retrieve first result because a single video was processed
-    for frame in result.annotation_results[0].explicit_annotation.frames:
-        likelihood = videointelligence.Likelihood(frame.pornography_likelihood)
-        frame_time = frame.time_offset.seconds + frame.time_offset.microseconds / 1e6
-        content_analysis_dict[frame_time] = likelihood.name
-        print("Time: {}s".format(frame_time))
-        print("\tpornography: {}".format(likelihood.name))
+#     content_analysis_dict = {}
+#     # Retrieve first result because a single video was processed
+#     for frame in result.annotation_results[0].explicit_annotation.frames:
+#         likelihood = videointelligence.Likelihood(frame.pornography_likelihood)
+#         frame_time = frame.time_offset.seconds + frame.time_offset.microseconds / 1e6
+#         content_analysis_dict[frame_time] = likelihood.name
+#         print("Time: {}s".format(frame_time))
+#         print("\tpornography: {}".format(likelihood.name))
 
-    return content_analysis_dict
+#     return content_analysis_dict
 
 def get_user_summary(guid, username):
     import requests
