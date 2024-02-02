@@ -28,5 +28,5 @@ if __name__ == '__main__':
     #                          keyfile=getenv('SSL_KEY'), certfile=getenv('SSL_CERT'))
     # http_server.serve_forever()
     # instead of the above, use the following:
-    app.run(host=HOST, debug=False)
+    app.run(debug=False, host='0.0.0.0', port=int(environ.get('PORT', 5000)))
     # app.run(host=HOST, port=PORT, debug=False)
