@@ -18,15 +18,15 @@ dotenv.load_dotenv()
 if __name__ == '__main__':
     HOST = '0.0.0.0' 
     # HOST = 'localhost'
-    try:
+    """try:
         PORT = int(environ.get('SERVER_PORT', '5555'))
     except ValueError:
-        PORT = 5555
+        PORT = 5555"""
 
     # Use gevent's WSGIServer with WebSocketHandler for Flask-SocketIO
     # http_server = WSGIServer((HOST, PORT), app, handler_class=WebSocketHandler, 
     #                          keyfile=getenv('SSL_KEY'), certfile=getenv('SSL_CERT'))
     # http_server.serve_forever()
     # instead of the above, use the following:
-    app.run(host=HOST, port=PORT, debug=True)
+    app.run(host=HOST, debug=True)
     # app.run(host=HOST, port=PORT, debug=False)
