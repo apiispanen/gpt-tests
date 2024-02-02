@@ -3,7 +3,7 @@
 # -*- coding: utf-8 -*-
 from datetime import datetime
 from flask import render_template, jsonify, request, Response, g
-from flask_session import Session
+#from flask_session import Session
 from AIWebService import app, config, helpers #, schemas, transcriber, gc_visionsensor, fireconnect #, nsfw_final_testing
 import openai, json
 import dotenv
@@ -15,9 +15,9 @@ messages = []
 
 openai.api_key = os.getenv("OPENAI_API_KEY")
 app.secret_key = os.getenv("SECRET_KEY", "default_secret_key_here")
-app.config["SESSION_TYPE"] = "filesystem"
-app.config["SESSION_PERMANENT"] = False
-Session(app)
+#app.config["SESSION_TYPE"] = "filesystem"
+#app.config["SESSION_PERMANENT"] = False
+#Session(app)
 
 # THIS IS WHERE YOU SET GPT
 client = openai.OpenAI(
