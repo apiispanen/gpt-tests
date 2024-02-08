@@ -3,7 +3,7 @@
 # -*- coding: utf-8 -*-
 from datetime import datetime
 from flask import render_template, jsonify, request, Response, g
-#from flask_session import Session
+#-from flask_session import Session
 from AIWebService import app, config, helpers #, schemas, transcriber, gc_visionsensor, fireconnect #, nsfw_final_testing
 import openai, json
 import dotenv
@@ -62,7 +62,10 @@ def chatGPTWebAPITester():
 def chat_with_gpt(messages=messages):
         
     prompt = request.form['prompt']
+    #Adding Pirate Style here:
+    messages.append({"role": "system", "content" :"Arr, speakin' in pirate style, me heartie!"})
     messages.append({"role": "user", "content": prompt})
+    
     response = client.chat.completions.create(
         model=config.model,
         messages=messages, 
@@ -82,6 +85,15 @@ def chat_with_gpt(messages=messages):
 
     return jsonify({"message": response_message})
 
+
+
+"""Tasks to perform:
+#Create GPT that speaks with a colonial accent
+def chat_with_gpt_colonial
+
+#Create GPT that Dreh tells me what I need to do. Something with memory aspect. Do research
+
+"""
 
 
 # ##################################################################################################
