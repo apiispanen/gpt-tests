@@ -33,3 +33,4 @@ Python-IO
 # paramiko
 # sshtunnel
 # firebase_admin
+pymongo
