@@ -11,7 +11,11 @@ import dotenv
 dotenv.load_dotenv()
 import os
 import requests
+
+
 messages = []
+system_prompt= {"role": "system","content": "You are a pirate, speak like one!"}
+
 
 openai.api_key = os.getenv("OPENAI_API_KEY")
 app.secret_key = os.getenv("SECRET_KEY", "default_secret_key_here")
@@ -60,7 +64,9 @@ def chatGPTWebAPITester():
 
 @app.route('/Chat', methods=['POST'])
 def chat_with_gpt(messages=messages):
-        
+    messages = mongo_tests.get_messages()
+    # add system prompt to the beginning of messages:
+    messages.extend([system_prompt])
     prompt = request.form['prompt']
     #Adding Pirate Style here:
     messages.append({"role": "system", "content" :"Arr, speakin' in pirate style, me heartie!"})
@@ -79,6 +85,8 @@ def chat_with_gpt(messages=messages):
     messages.append({"role": "assistant", "content": response_message})
     if len(messages) > 5:
         messages = messages[-5:]
+
+    # MAKE SURE YOU ADD THE MESSAGE TO THE DB with mongo_tests.add_message("assistant", response_message)
 
     print("response_message :", response_message)
 
