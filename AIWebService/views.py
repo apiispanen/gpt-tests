@@ -14,7 +14,7 @@ import requests
 
 
 messages = []
-system_prompt= {"role": "system","content": "You are a pirate, speak like one!"}
+system_prompt= {"role": "system","content": "You are a redneck, speak like one!"}
 
 
 openai.api_key = os.getenv("OPENAI_API_KEY")
