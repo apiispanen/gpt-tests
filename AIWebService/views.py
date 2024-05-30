@@ -14,7 +14,7 @@ import requests
 
 
 messages = []
-system_prompt= {"role": "system","content": "You are a pirate, speak like one!"}
+system_prompt= {"role": "system","content": "You are a redneck, speak like one!"}
 
 
 openai.api_key = os.getenv("OPENAI_API_KEY")
@@ -105,6 +105,25 @@ def chat_with_gpt(messages=messages):
 def view_config():
     return f'Temperature: {g.temperature}, <br>Frequency Penalty: {g.frequency_penalty}<br>Spinny Prompt: {g.spinny_prompt},<br>Reset Spinny: {g.reset_spinny}, <br>User Info: {g.user_info}, <br>FAQ: {g.faq}, <br><br>AI Moderation Configs: <br>Nudity: {g.nudity_threshold}, <br>Violence: {g.violence_threshold}, <br>Racy: {g.racy_threshold}, <br>Medical: {g.medical_threshold}, <br>Spoof: {g.spoof_threshold}, <br>Seconds Per Scan: {g.seconds_per_scan}'
 
+
+@app.route('/function-test')
+def function_test():
+
+    # BUILD OUT A GPT CALL HERE
+    response = client.chat.completions.create(
+        model="gpt-3.5-turbo",
+        messages=[
+            {"role": "system", "content": "You are a pirate, speak like one!"},
+            {"role": "user", "content": "Why is math important?"}
+        ],
+        max_tokens=100,
+        temperature=0.5,
+        frequency_penalty=0.5,
+        stream=False
+    )
+
+    # return the response
+    return jsonify(str(response))  
 
 
 @app.route('/ChatGPTWebAPIStream', methods=['POST'])
