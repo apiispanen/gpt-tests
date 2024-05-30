@@ -48,6 +48,31 @@ def home():
 def hello():
     return jsonify({"message": "Hello World! Testbot API is online."})
 
+@app.route('/function-test')
+def function_test():
+
+
+    # ADD COMPANY DATA HERE
+    
+
+    # BUILD OUT A GPT CALL HERE
+    response = client.chat.completions.create(
+        model="gpt-3.5-turbo",
+        messages=[
+            {"role": "system", "content": "You are a pirate, speak like one!"},
+            {"role": "user", "content": "Why is math important?"}
+        ],
+        max_tokens=100,
+        temperature=0.5,
+        frequency_penalty=0.5,
+        stream=False
+    )
+
+    # return the response
+    return jsonify(str(response))
+
+
+
 
 @app.route('/ChatGPTWebAPITester', methods=['GET'])
 def chatGPTWebAPITester():
